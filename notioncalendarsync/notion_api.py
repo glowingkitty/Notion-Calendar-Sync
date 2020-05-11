@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from notion.client import NotionClient
 
-from notion_calendar_sync.google_calendar import GoogleCalendar
+from notioncalendarsync.google_calendar import GoogleCalendar
 
 
 class Notion(NotionClient):
