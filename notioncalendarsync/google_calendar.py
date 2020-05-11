@@ -59,8 +59,8 @@ class GoogleCalendar():
                                                     body={
                                                         "summary": title,
                                                         "description": description,
-                                                        "start": {"dateTime": str(date_start), "timeZone": timezone} if hasattr(date_start, 'hour') else {'date': str(date_start)},
-                                                        "end": {"dateTime": str(date_end), "timeZone": timezone} if hasattr(date_end, 'hour') else {'date': str(date_end)},
+                                                        "start": {"dateTime": date_start.strftime('%Y-%m-%dT%H:%M:%SZ'), "timeZone": timezone} if hasattr(date_start, 'hour') else {'date': str(date_start)},
+                                                        "end": {"dateTime": date_end.strftime('%Y-%m-%dT%H:%M:%SZ'), "timeZone": timezone} if hasattr(date_end, 'hour') else {'date': str(date_end)},
                                                     }
                                                     ).execute()
 
@@ -79,8 +79,8 @@ class GoogleCalendar():
                                                     body={
                                                         "summary": title,
                                                         "description": description,
-                                                        "start": {"dateTime": str(date_start), "timeZone": timezone} if hasattr(date_start, 'hour') else {'date': str(date_start)},
-                                                        "end": {"dateTime": str(date_end), "timeZone": timezone} if hasattr(date_end, 'hour') else {'date': str(date_end)},
+                                                        "start": {"dateTime": date_start.strftime('%Y-%m-%dT%H:%M:%SZ'), "timeZone": timezone} if hasattr(date_start, 'hour') else {'date': str(date_start)},
+                                                        "end": {"dateTime": date_end.strftime('%Y-%m-%dT%H:%M:%SZ'), "timeZone": timezone} if hasattr(date_end, 'hour') else {'date': str(date_end)},
                                                     }
                                                     ).execute()
 
