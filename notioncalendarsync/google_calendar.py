@@ -94,7 +94,7 @@ class GoogleCalendar():
         print()
 
     def get_events(self, maxResults=200):
-        now = (datetime.utcnow()-timedelta(days=1)).isoformat() + 'Z'
+        now = (datetime.utcnow()-timedelta(days=30)).isoformat() + 'Z'
         events_result = self.service.events().list(calendarId='primary', timeMin=now,
                                                    maxResults=maxResults, singleEvents=True,
                                                    orderBy='startTime').execute()
@@ -109,14 +109,14 @@ class GoogleCalendar():
             return False
 
         if 'dateTime' in existing_event['start']:
-            if existing_event['start']['dateTime'] != str(date_start):
+            if existing_event['start']['dateTime'] != date_start.strftime('%Y-%m-%dT%H:%M:%SZ'):
                 return False
         else:
             if existing_event['start']['date'] != str(date_start):
                 return False
 
         if 'dateTime' in existing_event['end']:
-            if existing_event['end']['dateTime'] != str(date_end):
+            if existing_event['end']['dateTime'] != date_end.strftime('%Y-%m-%dT%H:%M:%SZ'):
                 return False
         else:
             if existing_event['end']['date'] != str(date_end):
