@@ -1,14 +1,17 @@
 from __future__ import print_function
 
+# If modifying these scopes, delete the file token.pickle.
+import os
 import os.path
 import pickle
+import sys
 from datetime import datetime, timedelta
 
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-# If modifying these scopes, delete the file token.pickle.
+dirname = os.path.dirname(__file__).replace('/notioncalendarsync', '')
 
 
 class GoogleCalendar():
@@ -21,8 +24,8 @@ class GoogleCalendar():
         # The file token.pickle stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.
-        if os.path.exists('token.pickle'):
-            with open('token.pickle', 'rb') as token:
+        if os.path.exists(os.path.join(dirname, 'token.pickle')):
+            with open(os.path.join(dirname, 'token.pickle'), 'rb') as token:
                 self.creds = pickle.load(token)
         # If there are no (valid) credentials available, let the user log in.
         if not self.creds or not self.creds.valid:
@@ -30,10 +33,10 @@ class GoogleCalendar():
                 self.creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'credentials.json', self.scopes)
+                    os.path.join(dirname, 'credentials.json'), self.scopes)
                 self.creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('token.pickle', 'wb') as token:
+            with open(os.path.join(dirname, 'token.pickle'), 'wb') as token:
                 pickle.dump(self.creds, token)
 
         self.service = build('calendar', 'v3', credentials=self.creds)
