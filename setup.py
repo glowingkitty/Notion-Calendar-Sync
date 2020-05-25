@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="notioncalendarsync",  # Replace with your own username
-    version="1.0.4",
+    version="1.0.5",
     author="Marco",
     author_email=None,
     description="The unofficial Notion API extended with the option to sync your Notion events to Google Calendar.",
