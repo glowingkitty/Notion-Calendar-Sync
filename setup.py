@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="notioncalendarsync",  # Replace with your own username
-    version="1.0.7",
+    version="1.0.8",
     author="Marco",
     author_email=None,
     description="The unofficial Notion API extended with the option to sync your Notion events to Google Calendar.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/marcoEDU/Notion-Calendar-Sync",
+    url="https://github.com/glowingkitty/Notion-Calendar-Sync",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
